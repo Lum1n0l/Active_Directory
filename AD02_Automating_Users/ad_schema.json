@@ -1,0 +1,57 @@
+{
+    "domain": "adlabs.com",
+
+    "groups" : [
+        {
+            "name": "Staff"
+        }
+    ],
+
+
+
+
+
+    "users": [
+
+        {
+            "name": "John Doe",
+            "password": "Sillysausage1!",
+            "groups": [
+                "Staff"
+            ] 
+            
+        },
+        {
+            "name": "Jane Smith",
+            "password": "Megakeyboard1!",
+            "groups": [
+                "Staff"
+            ] 
+            
+        },
+        {
+            "name": "Mother Fucker",
+            "password": "Chocolaterain1!",
+            "groups": [
+                "Staff"
+            ] 
+            
+        },
+        {
+            "name": "Bum Licker",
+            "password": "Analbeads1!",
+            "groups": [
+                "Staff"
+            ] 
+            
+        },
+        {
+            "name": "Nipple Flicker",
+            "password": "Badgermushroom1!",
+            "groups": [
+                "Staff"
+            ] 
+            
+        }
+    ]
+}
