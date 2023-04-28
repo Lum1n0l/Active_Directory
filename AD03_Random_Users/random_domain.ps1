@@ -8,10 +8,11 @@ $groups = @()
 $users = @()
 
 $num_groups = 10
-for ( $i = 0; $i -lt $num_groups; $i++){
-    $new_group = (Get-Random -InputObject $group_names)
-    $groups += $new_group
-    $group_names.Remove($new_group)
+for ( $i = 0; $i -lt $num_groups; $i++ ){
+    $group_name = (Get-Random -InputObject $group_names)
+    $group = @{ "name" = "$group_name" }
+    $groups += $group
+    $group_names.Remove($group_name)
 }
 
 $num_users = 100
@@ -19,14 +20,22 @@ for ( $i = 0; $i -lt $num_users; $i++ ){
     $first_name = (Get-Random -InputObject $first_names)
     $surname = (Get-Random -InputObject $surnames)
     $password = (Get-Random -InputObject $passwords)
+    
     $new_user = @{ 
         "name"="$first_name $surname"
-        "password" = $password
-        "groups" = @( (Get-Random -InputObject $groups) ) 
+        "password" = "$password"
+        "groups" = @( (Get-Random -InputObject $groups).name ) 
     }
-Write-Output $new_user
+
+    $users += $new_user
 
     $first_names.Remove($first_name)
     $surnames.Remove($surname)
     $passwords.Remove($password)
 }
+
+Write-Output @{ 
+    "domain"= "adlabs.com"
+    "groups"=$groups
+    "users"=$users
+} | ConvertTo-Json
