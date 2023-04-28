@@ -15,15 +15,16 @@ for ( $i = 0; $i -lt $num_groups; $i++){
 }
 
 $num_users = 100
-for ( $i = 0; $i -lt $num_users; $i++){
+for ( $i = 0; $i -lt $num_users; $i++ ){
     $first_name = (Get-Random -InputObject $first_names)
     $surname = (Get-Random -InputObject $surnames)
     $password = (Get-Random -InputObject $passwords)
-    $new_user = @{
+    $new_user = @{ 
         "name"="$first_name $surname"
         "password" = $password
         "groups" = @( (Get-Random -InputObject $groups) ) 
     }
+Write-Output $new_user
 
     $first_names.Remove($first_name)
     $surnames.Remove($surname)
