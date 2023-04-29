@@ -1,3 +1,4 @@
+param( [Parameter(Mandatory=$true)] $OutputJSONFile )
 
 $group_names = [System.Collections.ArrayList](Get-Content "AD03_Random_Users/group_names.txt")
 $first_names = [System.Collections.ArrayList](Get-Content "AD03_Random_Users/first_names.txt")
@@ -38,4 +39,4 @@ Write-Output @{
     "domain"= "adlabs.com"
     "groups"=$groups
     "users"=$users
-} | ConvertTo-Json
+} | ConvertTo-Json | Out-File $OutputJSONFile
