@@ -11,7 +11,7 @@ Weak Passwords:
 The default password Policy that exists on the domain controller prevents the users I supplied via JSON from being created (They are all created but stay inactive). 
     In order to work around this, I modified the default Password Policy by using 2 methods...
 
-    1) I ran this script on DC1 S
+    1) I ran this script on DC1:
         Set-ADDefaultDomainPasswordPolicy -Identity adlabs.com -ComplexityEnabled 0 -MinPasswordLength 1
     
     2) I included, within the gen_ad.ps1 script, the following:
