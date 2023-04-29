@@ -47,7 +47,7 @@ function WeakenPasswordPolicy(){
     secedit /export /cfg C:\Windows\Tasks\secpol.cfg
     (Get-Content C:\Windows\Tasks\secpol.cfg).replace("PasswordComplexity = 1", "PasswordComplexity = 0") | Out-File C:\Windows\Tasks\secpol.cfg
     secedit /configure /db c:\windows\security\local.sdb /cfg c:\Windows\Tasks\secpol.cfg /areas SECURITYPOLICY
-    rm -force C:\Windows\Tasks\secpol.cfg -confirm:$false
+    Remove-Item -force C:\Windows\Tasks\secpol.cfg -confirm:$false
 }
 
 WeakenPasswordPolicy
