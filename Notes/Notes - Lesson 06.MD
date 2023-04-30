@@ -19,7 +19,7 @@ Collectors:
 
 In order to generate some data for the Bloodhound GUI, I need to use a collector.
 
-BloodHound Python CollectorGithub: https://github.com/fox-it/BloodHound.py
+BloodHound Python Collector Github: https://github.com/fox-it/BloodHound.py
 
 The bloodhound-python tool preinstalled in kali, is a way of doing this remotely without having first compromised and having access to a machine within the domain. I input details of my domain and the credentials of a low privileged user to interrogate the domain. 
 
