@@ -12,7 +12,7 @@ Once neo4j is running, I need to download and run the Bloodhound GUI from their 
 
 Once downloaded and extracted, chmod the executable and run WITHOUT sudo and also appended with the following flag (--no-sandbox). 
 
-Change the default credentials via Firefox, (http://localhost:7447) and then I can log into the Bloodhound GUI.
+Change the default credentials via Firefox, (http://localhost:7474) and then I can log into the Bloodhound GUI.
 
 
 Collectors: 
