@@ -11,3 +11,7 @@ I can store login credentials for the Domain Controller as a variable within the
 
 This can now be passed back in when generating a new PS Session:
     $dc = New-PSSession -ComputerName IP -Credential $cred
+
+While logged into the workstation (WS1) as any domain user, I can run the following command to view a list of all domain users: 
+    net user /domain
+

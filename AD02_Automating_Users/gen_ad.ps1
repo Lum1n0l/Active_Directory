@@ -1,4 +1,7 @@
-param([Parameter(Mandatory=$true)] $JSONFile)
+param(
+    [Parameter(Mandatory=$true)] $JSONFile,
+    [switch]$Undo
+    )
 function CreateADGroup(){
     param([Parameter(Mandatory=$true)] $groupObject)
 
@@ -69,16 +72,30 @@ function ResetPasswordPolicy(){
     Set-ADDefaultDomainPasswordPolicy -Identity adlabs.com -ComplexityEnabled 1 -MinPasswordLength 7
 }
 
-WeakenPasswordPolicy
-
 $json = ( Get-Content $JSONFile | ConvertFrom-Json)
-
 $Global:Domain = $json.domain
 
-foreach ( $group in $json.groups ){
-    CreateADGroup $group
-}
+if ( -not $Undo) {
+    WeakenPasswordPolicy
 
-foreach ( $user in $json.users ){
-    CreateADUser $user
+    foreach ( $group in $json.groups ){
+        CreateADGroup $group
+    }
+    
+    foreach ( $user in $json.users ){
+        CreateADUser $user
+    }
+
+
+}else{
+
+    ResetPasswordPolicy
+
+    foreach ( $user in $json.users ){
+        RemoveADUser $user
+    }
+
+    foreach ( $group in $json.groups ){
+        RemoveADGroup $group
+    }
 }
