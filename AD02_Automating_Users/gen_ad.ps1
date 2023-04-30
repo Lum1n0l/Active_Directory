@@ -43,11 +43,30 @@ function CreateADUser(){
     }
 }
 
+function RemoveADUser(){
+    param( [Parameter(Mandatory=$true)] $userObject)
+
+    $name = $userObject.name
+    $firstname, $lastname = $name.Split(" ")
+    $username = ($firstname[0] + $lastname).ToLower()
+    $samAccountName = $username
+    Remove-ADUser -Identity $samAccountname -Confirm:$False
+
+}
 function WeakenPasswordPolicy(){
     secedit /export /cfg C:\Windows\Tasks\secpol.cfg
     (Get-Content C:\Windows\Tasks\secpol.cfg).replace("PasswordComplexity = 1", "PasswordComplexity = 0").replace("MinimumPasswordLength = 7", "MinimumPasswordLength = 1") | Out-File C:\Windows\Tasks\secpol.cfg
     secedit /configure /db c:\windows\security\local.sdb /cfg c:\Windows\Tasks\secpol.cfg /areas SECURITYPOLICY
     Remove-Item -force C:\Windows\Tasks\secpol.cfg -confirm:$false
+}
+
+function ResetPasswordPolicy(){
+    secedit /export /cfg C:\Windows\Tasks\secpol.cfg
+    (Get-Content C:\Windows\Tasks\secpol.cfg).replace("PasswordComplexity = 0", "PasswordComplexity = 1").replace("MinimumPasswordLength = 1", "MinimumPasswordLength = 7") | Out-File C:\Windows\Tasks\secpol.cfg
+    secedit /configure /db c:\windows\security\local.sdb /cfg c:\Windows\Tasks\secpol.cfg /areas SECURITYPOLICY
+    Remove-Item -force C:\Windows\Tasks\secpol.cfg -confirm:$false
+
+    Set-ADDefaultDomainPasswordPolicy -Identity adlabs.com -ComplexityEnabled 1 -MinPasswordLength 7
 }
 
 WeakenPasswordPolicy
