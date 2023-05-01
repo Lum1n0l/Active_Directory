@@ -49,7 +49,7 @@ for ( $i = 1; $i -le $UserCount; $i++ ){
         "groups" = @( (Get-Random -InputObject $groups).name ) 
     }
 
-    if ( $local_admin_indexes | Where { $_ -eq $i } ){
+    if ( $local_admin_indexes | Where-Object { $_ -eq $i } ){
         $new_user["local_admin"] = $true
     }
 
