@@ -19,3 +19,7 @@ Editing the Trusted Hosts file (Once PSRemoting enabled):
 Invoke-Command from the DC to a WS only works when entered directly into the DC, instead of via a PSSession. 
 
 gen_ad updated with a foreach loop that creates local admins across based on which machines are specified within the ad_schema file. 
+
+We manually updated the old ad_schema.json file to include a local_admin field. Within which, we specified a machine hostname that's included within our domain environment. 
+
+When the updated gen_ad script now runs, it will Invoke-Expression and remotely create the specified users accounts as local admins on each corrosponding machine. 
