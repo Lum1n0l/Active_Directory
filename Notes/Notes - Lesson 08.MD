@@ -16,4 +16,6 @@ Editing the Trusted Hosts file (Once PSRemoting enabled):
     set-item wsman:\localhost\client\trustedhosts -Value "NEWVALUE"
 
 
+Invoke-Command from the DC to a WS only works when entered directly into the DC, instead of via a PSSession. 
 
+gen_ad updated with a foreach loop that creates local admins across based on which machines are specified within the ad_schema file. 

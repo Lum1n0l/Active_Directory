@@ -14,6 +14,7 @@
     "users": [
 
         {
+            "local_admin": ["ws1"],
             "name": "John Doe",
             "password": "Sillysausage1!",
             "groups": [
@@ -30,6 +31,7 @@
             
         },
         {
+            "local_admin": ["ws2"],
             "name": "Mother Fucker",
             "password": "Chocolaterain1!",
             "groups": [
@@ -46,6 +48,7 @@
             
         },
         {
+            "local_admin": ["ws1", "ws2", "dc1"],
             "name": "Nipple Flicker",
             "password": "Badgermushroom1!",
             "groups": [
