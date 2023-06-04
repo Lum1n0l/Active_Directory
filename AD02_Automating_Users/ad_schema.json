@@ -17,6 +17,7 @@
             "local_admin": ["ws1"],
             "name": "John Doe",
             "password": "Sillysausage1!",
+            "show_password": true,
             "groups": [
                 "Staff"
             ] 
@@ -51,6 +52,15 @@
             "local_admin": ["ws1", "ws2", "dc1"],
             "name": "Nipple Flicker",
             "password": "Badgermushroom1!",
+            "groups": [
+                "Staff"
+            ] 
+            
+        }, 
+        {
+            "name": "Another User",
+            "password": "SuperPassword123@",
+            "show_password": true,
             "groups": [
                 "Staff"
             ] 
